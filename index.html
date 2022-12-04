@@ -19,16 +19,70 @@
         <div class="statistics__lose">3</div>
     </div>
 
-    <div class="page page--home">
-        <h1>DOMOWA</h1>
-        <button class="page__btn-start">Zacznij wyścig</button>
+    <div class="page page--home" id="page-home">
+        <div class="page__container container">
+
+            <div class="container__bet bet">
+                <div class="bet__title title">
+                    <h2 class="title__main">Wytypuj zwycięzce</h2>
+                </div>
+
+                <div class="bet__drivers drivers">
+                    <div class="drivers__option option" data-option-id="1">
+                        <div class="option__image image">
+                            <img src="https://randomuser.me/api/portraits/men/94.jpg" alt="" class="image__img" data-option-photo="1"/>
+                        </div>
+                        <div class="option__info info">
+                            <h3 class="info__title" data-option-name="1">Kuba KowalskiKowalski</h3>
+                            <div class="info__country country">
+                                <img src="https://www.countryflagicons.com/SHINY/32/PL.png" alt="" class="country__img" data-option-flag="1">
+                                <p class="country__text" data-option-country="1">Polska</p>
+                            </div>
+                        </div>
+                        <div class="option__chances chances">
+                            <h3 class="chances__number" data-option-chances="1">3.56</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="drivers__option option" data-option-id="2">
+                        <div class="option__image image">
+                            <img src="https://randomuser.me/api/portraits/men/94.jpg" alt="" class="image__img" data-option-photo="2"/>
+                        </div>
+                        <div class="option__info info">
+                            <h3 class="info__title" data-option-name="2">Kuba Kowalski</h3>
+                            <div class="info__country country">
+                                <img src="https://www.countryflagicons.com/SHINY/32/PL.png" alt="" class="country__img" data-option-flag="2">
+                                <p class="country__text" data-option-country="2">Polska</p>
+                            </div>
+                        </div>
+                        <div class="option__chances chances">
+                            <h3 class="chances__number" data-option-chances="2">3.56</h3>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="bet__calculate"></div>
+            </div>
+
+            <div class="container__bet bet">
+
+            </div>
+
+            <div class="container__button button">
+                <button class="button__main" id="page-btn-start">Zacznij wyścig</button>
+            </div>
+
+        </div>
+        <!-- <h2>Wytypuj zwycięzce</h2>
+        <button class="page__btn-main" id="page-btn-start">Zacznij wyścig</button> -->
     </div>
 
-    <div class="page page--race page--disabled">
+    <div class="page page--race page--disabled" id="page-race">
         <h1>WYŚCIG</h1>
-        <button class="page__btn-start">Wyjdź z wyścigu</button>
+        <button class="page__btn-main" id="page-btn-exit">Wyjdź z wyścigu</button>
     </div>
 
-    <script src="main.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 </html>

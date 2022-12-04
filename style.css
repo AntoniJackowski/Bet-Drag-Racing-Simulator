@@ -1,6 +1,7 @@
 :root {
     --toolbar-height: 70px;
     --statistics-height: 40px;
+    --drivers-option-gap: 30px;
 }
 
 * {
@@ -33,11 +34,65 @@ body {
 }
 
 .page {
+    display: flex;
+    align-items: center;
     border: 1px solid #000;
+    width: 100%;
     min-height: calc(100vh - var(--toolbar-height));
     margin-top: calc(var(--statistics-height) * -1);
 }
 
 .page--disabled {
     display: none;
+}
+
+.page__container {
+    margin: 50px auto;
+    width: 100%;
+    max-width: 900px;
+}
+
+.bet__title {
+    margin-bottom: 20px;
+}
+
+.bet__drivers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.drivers__option {
+    display: flex;
+    border: 1px solid #000;
+    width: calc(50% - var(--drivers-option-gap) / 2);
+}
+
+.image__img {
+    display: block;
+}
+
+.option__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 15px;
+}
+
+.info__title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 160px;
+}
+
+.info__country {
+    display: flex;
+    align-items: center;
+}
+
+.option__chances {
+    display: flex;
+    align-items: center;
+    padding: 40px;
 }
