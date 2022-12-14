@@ -1,3 +1,5 @@
+@import "spinner.css";
+
 :root {
     --toolbar-height: 70px;
     --statistics-height: 40px;
@@ -62,9 +64,17 @@ body {
 }
 
 .drivers__option {
+    position: relative;
     display: flex;
     border: 1px solid #000;
     width: calc(50% - var(--drivers-option-gap) / 2);
+    height: 130px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.drivers__option--is-selected {
+    outline: 2px solid red;
 }
 
 .image__img {
@@ -95,4 +105,33 @@ body {
     display: flex;
     align-items: center;
     padding: 40px;
+}
+
+.option__spinner {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+}
+
+.option__spinner--is-loading {
+    display: flex;
+}
+
+.spinner__icon {
+    transform: scale(0.8);
+}
+
+.bet__calculate {
+    display: flex;
+    padding: 20px 0;
+}
+
+.calculate__field {
+    flex-grow: 1;
 }
