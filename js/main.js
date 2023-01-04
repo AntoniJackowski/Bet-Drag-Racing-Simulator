@@ -1,7 +1,9 @@
+import { Bet } from "./classes/Bet.js";
 import { Game } from "./classes/Game.js";
 import { Member } from "./classes/Member.js";
 import { Wallet } from "./classes/Wallet.js";
 import * as DOM from "./elements.js";
+import * as utils from "./utils.js";
 
 const onInit = () => {
     console.log("ZAŁADOWANO STRONĘ!!");
@@ -11,6 +13,7 @@ const onInit = () => {
 
     wallet.renderAmount();
 
+    const members = [];
     const membersIds = [];
     DOM.driversOptionIds.forEach((item) => {
         const optionIdValue = item.attributes["data-option-id"].value;
@@ -32,13 +35,28 @@ const onInit = () => {
             DOM.driversOptionPhotos[memberIndex],
             DOM.driversOptionFlags[memberIndex],
             DOM.driversOptionCountries[memberIndex],
-            DOM.driversOptionChancess[memberIndex],
+            DOM.driversOptionChances[memberIndex],
             DOM.driversOptionSpinners[memberIndex]
         );
         member.getData();
-        DOM.driversOptionIds[memberIndex].addEventListener('click', () => {
-            member.toogleSelect();
-        });
+        // DOM.driversOptionIds[memberIndex].addEventListener('click', () => {
+        //     member.toogleSelect();
+        // });
+        members.push(member);
+    });
+    utils.selectMember(DOM.driversOptionIds);
+    utils.setMemberChances(members[0], members[1]);
+
+    DOM.bets.forEach((item, index) => {
+        const bet = new Bet(
+            item.attributes['data-bet'].value,
+            members,
+            wallet,
+            DOM.betsAmounts[index],
+            DOM.betsPrizes[index],
+            DOM.betsDuty[index],
+            DOM.betsWinClear[index]
+        );
     });
 
     DOM.pageBtnStart.addEventListener("click", () => {
