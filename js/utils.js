@@ -9,12 +9,3 @@ export const setMemberChances = (member1, member2) => {
 };
 
 export const getRandom = (min, max) => Math.random() * (max - min) + min;
-
-export const selectMember = (options) => {
-    console.log(options);
-    // members.forEach((member) => {
-    //     member.addEventListener('click', () => {
-    //         member.toogleSelect();
-    //     });
-    // });
-};

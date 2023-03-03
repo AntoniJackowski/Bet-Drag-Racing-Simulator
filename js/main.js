@@ -1,3 +1,4 @@
+import { MenuList } from "./classes/MenuList.js";
 import { Bet } from "./classes/Bet.js";
 import { Game } from "./classes/Game.js";
 import { Member } from "./classes/Member.js";
@@ -6,10 +7,12 @@ import * as DOM from "./elements.js";
 import * as utils from "./utils.js";
 
 const onInit = () => {
-    console.log("ZAŁADOWANO STRONĘ!!");
+
+    DOM.menuBtn.addEventListener('click', () => {
+        DOM.menuList.classList.toggle('menu__list--visible');
+    });
 
     const wallet = new Wallet(1500, "zł", DOM.statisticsCash);
-    const game = new Game();
 
     wallet.renderAmount();
 
@@ -24,7 +27,6 @@ const onInit = () => {
             membersIds.push(optionIdValue);
         }
     });
-    console.log(membersIds);
 
     membersIds.forEach((memberId) => {
         const memberIndex = memberId-1;
@@ -36,16 +38,19 @@ const onInit = () => {
             DOM.driversOptionFlags[memberIndex],
             DOM.driversOptionCountries[memberIndex],
             DOM.driversOptionChances[memberIndex],
-            DOM.driversOptionSpinners[memberIndex]
+            DOM.driversOptionSpinners[memberIndex],
+
+            DOM.driversRacePhotos[memberIndex],
+            DOM.driversRaceNames[memberIndex],
+            DOM.driversRaceFlags[memberIndex],
+            DOM.driversRaceCountries[memberIndex]
         );
         member.getData();
-        // DOM.driversOptionIds[memberIndex].addEventListener('click', () => {
-        //     member.toogleSelect();
-        // });
         members.push(member);
     });
-    utils.selectMember(DOM.driversOptionIds);
     utils.setMemberChances(members[0], members[1]);
+
+    const bets = [];
 
     DOM.bets.forEach((item, index) => {
         const bet = new Bet(
@@ -55,19 +60,46 @@ const onInit = () => {
             DOM.betsAmounts[index],
             DOM.betsPrizes[index],
             DOM.betsDuty[index],
-            DOM.betsWinClear[index]
+            DOM.betsWinClear[index],
+            DOM.pageBtnStart
         );
+        bets.push(bet);
+    });
+
+    const game = new Game(
+        bets,
+        wallet,
+        members,
+        DOM.pageHome,
+        DOM.pageRace,
+        DOM.raceTrack,
+        DOM.resultTitle,
+        DOM.pageBtnExit,
+        DOM.statisticsWin,
+        DOM.statisticsLose,
+        DOM.betsAmounts
+    );
+
+    DOM.menuListItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const itemIndex = item.attributes["data-list-item"].value;
+            switch(itemIndex){
+                case '1':
+                    MenuList.clearLocalStorage(game, wallet);
+                    break;
+    
+                default:
+                    MenuList.showDefaultAlert();
+                    break;
+            };
+        });
     });
 
     DOM.pageBtnStart.addEventListener("click", () => {
-        DOM.pageHome.classList.add("page--disabled");
-        DOM.pageRace.classList.remove("page--disabled");
         game.start();
     });
 
     DOM.pageBtnExit.addEventListener("click", () => {
-        DOM.pageHome.classList.remove("page--disabled");
-        DOM.pageRace.classList.add("page--disabled");
         game.end();
     });
 };

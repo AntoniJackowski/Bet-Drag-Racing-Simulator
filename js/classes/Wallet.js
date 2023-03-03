@@ -4,7 +4,11 @@ export class Wallet {
     #DOMrenderAmount;
 
     constructor(amount, currency, DOMrenderAmount) {
-        this.#amount = amount;
+        if (this.getLocalStorage() != null) {
+            this.#amount = Number(this.getLocalStorage());
+        } else {
+            this.#amount = amount;
+        };
         this.#currency = currency;
         this.#DOMrenderAmount = DOMrenderAmount;
     };
@@ -12,18 +16,28 @@ export class Wallet {
     modifyAmount(value) {
         this.#amount += value;
         this.renderAmount();
+        this.setLocalStorage();
     };
 
     setAmount(value) {
         this.#amount = value;
         this.renderAmount();
+        this.setLocalStorage();
     };
 
     renderAmount() {
-        this.#DOMrenderAmount.textContent = `${this.#amount} ${this.#currency}`;
+        this.#DOMrenderAmount.textContent = `${this.#amount.toFixed(2)} ${this.#currency}`;
     };
 
     getCurrency() {
         return this.#currency;
+    };
+
+    setLocalStorage() {
+        localStorage.setItem('amount', this.#amount);
+    };
+
+    getLocalStorage() {
+        return localStorage.getItem('amount');
     };
 };

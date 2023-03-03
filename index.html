@@ -11,6 +11,12 @@
 
     <div class="toolbar">
         <h1 class="toolbar__title">Bet Drag Racing Simulator</h1>
+        <div class="toolbar__menu menu">
+            <button class="menu__button" id="menu-btn"><i class="bi bi-gear"></i></button>
+            <ul class="menu__list list" id="menu-list">
+                <li class="list__item" data-list-item="1"><i class="bi bi-arrow-clockwise"></i>Reset</li>
+            </ul>
+        </div>
     </div>
     
     <div class="statistics">
@@ -18,10 +24,10 @@
             <p id="statistics-cash" class="statistics__text statistics__text--cash">1500</p>
         </div>
         <div class="statistics__win">
-            <p id="statistics-win" class="statistics__text statistics__text--win">4</p>
+            <p id="statistics-win" class="statistics__text statistics__text--win">0</p>
         </div>
         <div class="statistics__lose">
-            <p id="statistics-lose" class="statistics__text statistics__text--lose">3</p>
+            <p id="statistics-lose" class="statistics__text statistics__text--lose">0</p>
         </div>
     </div>
 
@@ -72,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 
                 <div class="bet__calculate" data-bet="1">
                     <div class="calculate__field field">
@@ -119,10 +125,62 @@
     </div>
 
     <div class="page page--race page--disabled" id="page-race">
-        <h1>WYŚCIG</h1>
-        <button class="page__btn-main" id="page-btn-exit">Wyjdź z wyścigu</button>
+        <div class="page__container container">
+            <div class="containter__race race">
+                <div class="race__info info">
+                    <div class="info__image image">
+                        <img class="image__img" data-race-photo="1" src="">
+                    </div>
+
+                    <div class="info__member member">
+                        <div class="member__name name">
+                            <h3 class="name__title" data-race-name="1"></h3>
+                        </div>
+                        
+                        <div class="member__country country">
+                            <div class="country__flag"><img data-race-flag="1" src=""></div>
+                            <div class="country__text" data-race-country="1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="race__track track">
+                    <div class="track__item" data-race-track="1"></div>
+                </div>
+            </div>
+
+            <div class="containter__race race">
+                <div class="race__info info">
+                    <div class="info__image image">
+                        <img class="image__img" data-race-photo="2" src="">
+                    </div>
+
+                    <div class="info__member member">
+                        <div class="member__name name">
+                            <h3 class="name__title" data-race-name="2"></h3>
+                        </div>
+                        
+                        <div class="member__country country">
+                            <div class="country__flag"><img data-race-flag="2" src=""></div>
+                            <div class="country__text" data-race-country="2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="race__track track">
+                    <div class="track__item" data-race-track="2"></div>
+                </div>
+            </div>
+
+            <div class="container__result result">
+                <h1 class="result__title" id="result-title"></h1>
+            </div>
+
+            <button class="page__btn-main" id="page-btn-exit">Wyjdź z wyścigu</button>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/main.js" type="module"></script>
 </body>
 </html>

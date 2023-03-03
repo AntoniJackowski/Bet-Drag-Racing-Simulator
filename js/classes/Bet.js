@@ -7,10 +7,14 @@ export class Bet {
     #DOMrenderBetPrizes;
     #DOMrenderBetDuty;
     #DOMrenderBetWinClear;
+    #DOMpageBtnStart;
+
+    #betAmount;
+    #betWinClear;
 
     #selectedMember = null;
     
-    constructor(id, members, wallet, DOMrenderBetAmount, DOMrenderBetPrizes, DOMrenderBetDuty, DOMrenderBetWinClear) {
+    constructor(id, members, wallet, DOMrenderBetAmount, DOMrenderBetPrizes, DOMrenderBetDuty, DOMrenderBetWinClear, DOMpageBtnStart) {
         this.#id = id;
         this.#members = members;
         this.#wallet = wallet;
@@ -18,19 +22,24 @@ export class Bet {
         this.#DOMrenderBetPrizes =DOMrenderBetPrizes;
         this.#DOMrenderBetDuty = DOMrenderBetDuty;
         this.#DOMrenderBetWinClear = DOMrenderBetWinClear;
+        this.#DOMpageBtnStart = DOMpageBtnStart;
         this.#init();
     };
     
     #init() {
         this.#toogleMembersListener();
+        this.#handleEmptyBetAmount(this.#DOMrenderBetAmount.value);
         ['change', 'keyup'].forEach((event) => {
-            this.#DOMrenderBetAmount.addEventListener(event, (e) => {
-                this.#fieldsRender(e.target.value);
+            this.#DOMrenderBetAmount.addEventListener(event, (e) => { 
+                this.#handleValidBetAmount(e.target.value);
+                this.#handleEmptyBetAmount(e.target.value);
+                e.target.value < 1 ? this.#fieldsRender(0) : this.#fieldsRender(e.target.value);
+                this.#betAmount = this.#DOMrenderBetAmount.value;
+                this.#betWinClear = this.#getBetWinClear(this.#betAmount);
             });
         });
         if(this.#selectedMember == null) {
             this.#DOMrenderBetAmount.disabled = true;
-            // this.#fieldsRender(0);
             this.#DOMrenderBetAmount.value = null;
         };
     };
@@ -43,12 +52,14 @@ export class Bet {
                     this.#DOMrenderBetAmount.value = null;
                     member.removeSelect();
                     this.#selectedMember = null;
+                    this.#handleBetAmountDisabled();               
                     return;
                 };
                 members.forEach((_member) => _member.removeSelect());
                 member.addSelect();
                 this.#selectedMember = member;
                 this.#fieldsRender(this.#DOMrenderBetAmount.value);
+                this.#handleBetAmountDisabled();
             });
         });
     };
@@ -75,4 +86,39 @@ export class Bet {
         this.#DOMrenderBetWinClear.textContent = this.#displayFormat(this.#getBetWinClear(value));
     };
 
+    #handleBetAmountDisabled() {
+        this.#DOMrenderBetAmount.disabled = this.#selectedMember === null;
+    };
+    
+    #handleValidBetAmount(value) {
+        this.#DOMpageBtnStart.disabled = value < 1;
+    };
+
+    #handleEmptyBetAmount(value) {
+        // this.#DOMpageBtnStart.disabled = value === '';
+        this.#DOMpageBtnStart.disabled = !value;
+    };
+
+    getBetAmountValue() {
+        return Number(this.#DOMrenderBetAmount.value);
+    };
+
+    getSelectedMember() {
+        return this.#selectedMember;
+    };
+
+    getBetAmount() {
+        return Number(this.#betAmount);
+    };
+
+    getBetWinClear() {
+        return this.#betWinClear;
+    };
+
+    clearSelectedMember() {
+        this.selectedMember = null;
+        this.#members.forEach((member) => {
+            member.removeSelect();
+        })
+    };
 };

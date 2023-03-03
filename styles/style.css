@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 @import "spinner.css";
 
 :root {
@@ -19,9 +20,28 @@ body {
 .toolbar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 30px;
     border: 1px solid #000;
     height: var(--toolbar-height);
+}
+
+.toolbar__menu {
+    position: relative;
+}
+
+.menu__list {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #c0c0c0;
+    border: 1px solid #000;
+    list-style: none;
+    width: 150px;
+}
+
+.menu__list--visible {
+    display: block;
 }
 
 .statistics {
@@ -135,3 +155,56 @@ body {
 .calculate__field {
     flex-grow: 1;
 }
+
+.containter__race {
+    display: flex;
+    border: 1px solid #000;
+}
+
+.race__info {
+    display: flex;
+    border: 1px solid #000;
+    width: 350px;
+}
+
+.info__member {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.member__country {
+    display: flex;
+    align-items: center;
+}
+
+.race__track {
+    position: relative;
+    flex-grow: 1;
+}
+
+.track__item {
+    position: absolute;
+    left: 0;
+    transition: 10s;
+    transform: translateX(0);
+    width: 10%;
+    height: 100%;
+    border: 1px solid #000;
+}
+
+.track__item--running {
+        animation: move both;
+    }
+  
+@keyframes move {
+    from {
+        left: 0;
+    }
+    to {
+        left: calc(100% - 10%);
+    }
+}
+
+

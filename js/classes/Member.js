@@ -15,6 +15,11 @@ export class Member {
     #DOMrenderCountry;
     #DOMrenderChances;
     #DOMrenderSpinner;
+
+    #DOMrenderRacePhotos;
+    #DOMrenderRaceNames ;
+    #DOMrenderRaceFlags ;
+    #DOMrenderRaceCountries;
     
     #isLoading = false;
     #isLoadgingActiveClass = 'option__spinner--is-loading';
@@ -22,7 +27,23 @@ export class Member {
     #isSelected = false;
     #isSelectedActiceClass = 'drivers__option--is-selected';
 
-    constructor(id, DOMrenderId, DOMrenderName, DOMrenderPhoto, DOMrenderFlag, DOMrenderCountry, DOMrenderChances, DOMrenderSpinner) {
+    #isWinner = false;
+
+    constructor(
+        id, 
+        DOMrenderId, 
+        DOMrenderName, 
+        DOMrenderPhoto, 
+        DOMrenderFlag, 
+        DOMrenderCountry, 
+        DOMrenderChances, 
+        DOMrenderSpinner, 
+
+        DOMrenderRacePhotos,
+        DOMrenderRaceNames,
+        DOMrenderRaceFlags,
+        DOMrenderRaceCountries
+    ) {
         this.#id = id;
         this.#DOMrenderId = DOMrenderId; 
         this.#DOMrenderName = DOMrenderName; 
@@ -31,6 +52,11 @@ export class Member {
         this.#DOMrenderCountry = DOMrenderCountry; 
         this.#DOMrenderChances = DOMrenderChances;
         this.#DOMrenderSpinner = DOMrenderSpinner;
+
+        this.#DOMrenderRacePhotos = DOMrenderRacePhotos;
+        this.#DOMrenderRaceNames = DOMrenderRaceNames;
+        this.#DOMrenderRaceFlags = DOMrenderRaceFlags;
+        this.#DOMrenderRaceCountries = DOMrenderRaceCountries;
     };
 
     getData() {
@@ -61,6 +87,11 @@ export class Member {
         this.#DOMrenderFlag.src = this.#flag;
         this.#DOMrenderCountry.textContent = this.#country;
         this.#DOMrenderChances.textContent = this.#chances;
+
+        this.#DOMrenderRacePhotos.src = this.#photo;
+        this.#DOMrenderRaceNames.textContent = `${this.#name} ${this.#surname}`;
+        this.#DOMrenderRaceFlags.src = this.#flag;
+        this.#DOMrenderRaceCountries.textContent = this.#country;
     };
 
     toogleSelect() {
@@ -84,7 +115,6 @@ export class Member {
 
     setChances(value) {
         this.#chances = value;
-        console.log(value);
         this.#DOMrenderChances.textContent = this.#chances;
     };
 
@@ -94,5 +124,13 @@ export class Member {
 
     getChances() {
         return Number(this.#chances);
+    };
+
+    setAsWinner() {
+        this.#isWinner = true;
+    };
+
+    getIsWinner() {
+        return this.#isWinner;
     };
 };
