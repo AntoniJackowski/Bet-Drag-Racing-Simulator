@@ -1,3 +1,5 @@
+import * as DOM from "./../elements.js";
+
 export class MenuList {
     static clearLocalStorage(game, wallet) {
         Swal.fire({
@@ -33,5 +35,12 @@ export class MenuList {
             confirmButtonText: 'Rozumiem',
             confirmButtonColor: '#000'
         });
+    };
+
+    static changeSoundItemValue(value) {
+        const soundItem = DOM.menuListItems.find((item) => item.attributes["data-list-item"].value === '2');
+        value 
+            ? soundItem.innerHTML = '<i class="bi bi-volume-up-fill"></i>Wyłącz muzykę'
+            : soundItem.innerHTML = '<i class="bi bi-volume-mute-fill"></i>Włącz muzykę';
     };
 };

@@ -1,4 +1,5 @@
 import * as utils from "./../utils.js";
+import { Sound } from "./Sound.js";
 
 export class Game {
     #bets;

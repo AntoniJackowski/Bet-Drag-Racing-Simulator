@@ -5,9 +5,9 @@ import { Member } from "./classes/Member.js";
 import { Wallet } from "./classes/Wallet.js";
 import * as DOM from "./elements.js";
 import * as utils from "./utils.js";
+import { Sound } from "./classes/Sound.js";
 
 const onInit = () => {
-
     DOM.menuBtn.addEventListener('click', () => {
         DOM.menuList.classList.toggle('menu__list--visible');
     });
@@ -88,6 +88,18 @@ const onInit = () => {
                     MenuList.clearLocalStorage(game, wallet);
                     break;
     
+                case '2':
+                    Sound.isPlaying ? Sound.stop() : Sound.play();
+                    break;
+
+                case '3':
+                    Sound.skip();
+                    break;
+
+                case '4':
+                    Sound.volume(DOM.changeVolumeInput.value);
+                    break;
+
                 default:
                     MenuList.showDefaultAlert();
                     break;
