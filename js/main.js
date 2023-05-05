@@ -1,25 +1,25 @@
-import { MenuList } from "./classes/MenuList.js";
-import { Bet } from "./classes/Bet.js";
-import { Game } from "./classes/Game.js";
-import { Member } from "./classes/Member.js";
-import { Wallet } from "./classes/Wallet.js";
-import * as DOM from "./elements.js";
-import * as utils from "./utils.js";
-import { Sound } from "./classes/Sound.js";
+import { MenuList } from './classes/MenuList.js';
+import { Bet } from './classes/Bet.js';
+import { Game } from './classes/Game.js';
+import { Member } from './classes/Member.js';
+import { Wallet } from './classes/Wallet.js';
+import * as DOM from './elements.js';
+import * as utils from './utils.js';
+import { Sound } from './classes/Sound.js';
 
 const onInit = () => {
     DOM.menuBtn.addEventListener('click', () => {
         DOM.menuList.classList.toggle('menu__list--visible');
     });
 
-    const wallet = new Wallet(1500, "zł", DOM.statisticsCash);
+    const wallet = new Wallet(1500, 'zł', DOM.statisticsCash);
 
     wallet.renderAmount();
 
     const members = [];
     const membersIds = [];
     DOM.driversOptionIds.forEach((item) => {
-        const optionIdValue = item.attributes["data-option-id"].value;
+        const optionIdValue = item.attributes['data-option-id'].value;
 
         if (membersIds.length === 0) {
             membersIds.push(optionIdValue);
@@ -29,7 +29,7 @@ const onInit = () => {
     });
 
     membersIds.forEach((memberId) => {
-        const memberIndex = memberId-1;
+        const memberIndex = memberId - 1;
         const member = new Member(
             memberId,
             DOM.driversOptionIds[memberIndex],
@@ -43,7 +43,7 @@ const onInit = () => {
             DOM.driversRacePhotos[memberIndex],
             DOM.driversRaceNames[memberIndex],
             DOM.driversRaceFlags[memberIndex],
-            DOM.driversRaceCountries[memberIndex]
+            DOM.driversRaceCountries[memberIndex],
         );
         member.getData();
         members.push(member);
@@ -61,7 +61,7 @@ const onInit = () => {
             DOM.betsPrizes[index],
             DOM.betsDuty[index],
             DOM.betsWinClear[index],
-            DOM.pageBtnStart
+            DOM.pageBtnStart,
         );
         bets.push(bet);
     });
@@ -77,17 +77,17 @@ const onInit = () => {
         DOM.pageBtnExit,
         DOM.statisticsWin,
         DOM.statisticsLose,
-        DOM.betsAmounts
+        DOM.betsAmounts,
     );
 
     DOM.menuListItems.forEach((item) => {
         item.addEventListener('click', () => {
-            const itemIndex = item.attributes["data-list-item"].value;
-            switch(itemIndex){
+            const itemIndex = item.attributes['data-list-item'].value;
+            switch (itemIndex) {
                 case '1':
                     MenuList.clearLocalStorage(game, wallet);
                     break;
-    
+
                 case '2':
                     Sound.isPlaying ? Sound.stop() : Sound.play();
                     break;
@@ -103,15 +103,15 @@ const onInit = () => {
                 default:
                     MenuList.showDefaultAlert();
                     break;
-            };
+            }
         });
     });
 
-    DOM.pageBtnStart.addEventListener("click", () => {
+    DOM.pageBtnStart.addEventListener('click', () => {
         game.start();
     });
 
-    DOM.pageBtnExit.addEventListener("click", () => {
+    DOM.pageBtnExit.addEventListener('click', () => {
         game.end();
     });
 };

@@ -1,4 +1,4 @@
-import { MenuList } from "./MenuList.js";
+import { MenuList } from './MenuList.js';
 
 export class Sound {
     static #soundList = ['./../assets/1.mp3', './../assets/2.mp3', './../assets/3.mp3'];
@@ -14,30 +14,28 @@ export class Sound {
         Sound.#sound.autoplay = true;
         Sound.isPlaying = true;
         MenuList.changeSoundItemValue(Sound.isPlaying);
-    };
+    }
 
     static stop() {
         Sound.#sound.pause();
         Sound.#sound.currentTime = 0;
         Sound.isPlaying = false;
         MenuList.changeSoundItemValue(Sound.isPlaying);
-    };
+    }
 
     static pause() {
         Sound.#sound.pause();
-    };
+    }
 
     static skip() {
-        Sound.#musicIndex < Sound.#soundList.length - 1 
-            ? Sound.#musicIndex++ 
-            : Sound.#musicIndex = 0;
-        
+        Sound.#musicIndex < Sound.#soundList.length - 1 ? Sound.#musicIndex++ : (Sound.#musicIndex = 0);
+
         Sound.stop();
         Sound.play();
-    };
+    }
 
     static volume(value) {
         Sound.#volume = value;
-        Sound.#sound.volume =  Sound.#volume;
-    };
-};
+        Sound.#sound.volume = Sound.#volume;
+    }
+}

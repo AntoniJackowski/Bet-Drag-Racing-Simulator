@@ -1,0 +1,19 @@
+.drivers__option {
+    transition: all 0.2s;
+    position: relative;
+    display: flex;
+    width: calc(50% - var(--drivers-option-gap) / 2);
+    height: 130px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.drivers__option:hover {
+    transform: scale(0.96);
+    box-shadow: 0px 0px 30px 1px rgba(251, 198, 56, 0.3);
+}
+
+.drivers__option--is-selected {
+    box-shadow: 0px 0px 30px 1px rgba(251, 198, 56, 0.3);
+    border: 1px solid rgba(251, 198, 56, 0.3);
+}

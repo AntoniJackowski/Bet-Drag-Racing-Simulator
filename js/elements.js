@@ -1,12 +1,11 @@
 export const pageBtnStart = document.querySelector('#page-btn-start');
-export const pageBtnExit= document.querySelector('#page-btn-exit');
+export const pageBtnExit = document.querySelector('#page-btn-exit');
 export const pageHome = document.querySelector('#page-home');
 export const pageRace = document.querySelector('#page-race');
 export const menuBtn = document.querySelector('#menu-btn');
 export const menuList = document.querySelector('#menu-list');
 export const menuListItems = [...document.querySelectorAll('[data-list-item]')];
 export const changeVolumeInput = document.querySelector('#change-volume-input');
-
 
 export const statisticsCash = document.querySelector('#statistics-cash');
 export const statisticsWin = document.querySelector('#statistics-win');

@@ -7,7 +7,7 @@ export class Member {
     #nat;
     #flag;
     #chances;
-    
+
     #DOMrenderId;
     #DOMrenderName;
     #DOMrenderPhoto;
@@ -17,10 +17,10 @@ export class Member {
     #DOMrenderSpinner;
 
     #DOMrenderRacePhotos;
-    #DOMrenderRaceNames ;
-    #DOMrenderRaceFlags ;
+    #DOMrenderRaceNames;
+    #DOMrenderRaceFlags;
     #DOMrenderRaceCountries;
-    
+
     #isLoading = false;
     #isLoadgingActiveClass = 'option__spinner--is-loading';
 
@@ -30,26 +30,26 @@ export class Member {
     #isWinner = false;
 
     constructor(
-        id, 
-        DOMrenderId, 
-        DOMrenderName, 
-        DOMrenderPhoto, 
-        DOMrenderFlag, 
-        DOMrenderCountry, 
-        DOMrenderChances, 
-        DOMrenderSpinner, 
+        id,
+        DOMrenderId,
+        DOMrenderName,
+        DOMrenderPhoto,
+        DOMrenderFlag,
+        DOMrenderCountry,
+        DOMrenderChances,
+        DOMrenderSpinner,
 
         DOMrenderRacePhotos,
         DOMrenderRaceNames,
         DOMrenderRaceFlags,
-        DOMrenderRaceCountries
+        DOMrenderRaceCountries,
     ) {
         this.#id = id;
-        this.#DOMrenderId = DOMrenderId; 
-        this.#DOMrenderName = DOMrenderName; 
-        this.#DOMrenderPhoto = DOMrenderPhoto; 
-        this.#DOMrenderFlag = DOMrenderFlag; 
-        this.#DOMrenderCountry = DOMrenderCountry; 
+        this.#DOMrenderId = DOMrenderId;
+        this.#DOMrenderName = DOMrenderName;
+        this.#DOMrenderPhoto = DOMrenderPhoto;
+        this.#DOMrenderFlag = DOMrenderFlag;
+        this.#DOMrenderCountry = DOMrenderCountry;
         this.#DOMrenderChances = DOMrenderChances;
         this.#DOMrenderSpinner = DOMrenderSpinner;
 
@@ -57,29 +57,29 @@ export class Member {
         this.#DOMrenderRaceNames = DOMrenderRaceNames;
         this.#DOMrenderRaceFlags = DOMrenderRaceFlags;
         this.#DOMrenderRaceCountries = DOMrenderRaceCountries;
-    };
+    }
 
     getData() {
         this.#isLoading = true;
         this.#DOMrenderSpinner.classList.add(this.#isLoadgingActiveClass);
         fetch('https://randomuser.me/api')
-        .then((response) => response.json())
-        .then((data) => {
-            this.#isLoading = false;
-            this.#DOMrenderSpinner.classList.remove(this.#isLoadgingActiveClass);
-            const result = data.results[0];
-            this.#name = result.name.first;
-            this.#surname = result.name.last;
-            this.#photo = result.picture.large;
-            this.#country = result.location.country;
-            this.#nat = result.nat;
-            this.#flag = `https://www.countryflagicons.com/FLAT/32/${this.#nat}.png`;
-            this.#renderData();
-        })
-        .catch((error) => {
-            console.log('error', error);
-        });
-    };
+            .then((response) => response.json())
+            .then((data) => {
+                this.#isLoading = false;
+                this.#DOMrenderSpinner.classList.remove(this.#isLoadgingActiveClass);
+                const result = data.results[0];
+                this.#name = result.name.first;
+                this.#surname = result.name.last;
+                this.#photo = result.picture.large;
+                this.#country = result.location.country;
+                this.#nat = result.nat;
+                this.#flag = `https://www.countryflagicons.com/FLAT/32/${this.#nat}.png`;
+                this.#renderData();
+            })
+            .catch((error) => {
+                console.log('error', error);
+            });
+    }
 
     #renderData() {
         this.#DOMrenderName.textContent = `${this.#name} ${this.#surname}`;
@@ -92,45 +92,45 @@ export class Member {
         this.#DOMrenderRaceNames.textContent = `${this.#name} ${this.#surname}`;
         this.#DOMrenderRaceFlags.src = this.#flag;
         this.#DOMrenderRaceCountries.textContent = this.#country;
-    };
+    }
 
     toogleSelect() {
-        this.#isSelected ? this.#isSelected = false : this.#isSelected = true;
+        this.#isSelected ? (this.#isSelected = false) : (this.#isSelected = true);
         this.#DOMrenderId.classList.toggle(this.#isSelectedActiceClass);
-    };
+    }
 
     addSelect() {
         this.#isSelected = true;
         this.#DOMrenderId.classList.add(this.#isSelectedActiceClass);
-    };
+    }
 
     removeSelect() {
         this.#isSelected = false;
         this.#DOMrenderId.classList.remove(this.#isSelectedActiceClass);
-    };
+    }
 
     getIsSelected() {
         return this.#isSelected;
-    };
+    }
 
     setChances(value) {
         this.#chances = value;
         this.#DOMrenderChances.textContent = this.#chances;
-    };
+    }
 
     getDOMrenderId() {
         return this.#DOMrenderId;
-    };
+    }
 
     getChances() {
         return Number(this.#chances);
-    };
+    }
 
     setAsWinner() {
         this.#isWinner = true;
-    };
+    }
 
     getIsWinner() {
         return this.#isWinner;
-    };
-};
+    }
+}

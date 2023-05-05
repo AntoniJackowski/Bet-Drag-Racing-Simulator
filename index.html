@@ -1,189 +1,234 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bet Drag Racing Simulator</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-
-    <div class="toolbar">
-        <h1 class="toolbar__title">Bet Drag Racing Simulator</h1>
-        <div class="toolbar__menu menu">
-            <button class="menu__button" id="menu-btn"><i class="bi bi-gear"></i></button>
-            <ul class="menu__list list" id="menu-list">
-                <li class="list__item" data-list-item="1"><i class="bi bi-arrow-clockwise"></i>Reset</li>
-                <li class="list__item" data-list-item="2"><i class="bi bi-volume-mute-fill"></i>Włącz muzykę</li>
-                <li class="list__item" data-list-item="3"><i class="bi bi-skip-forward-fill"></i>Przełącz muzykę</li>
-                <li class="list__item" data-list-item="4"><input id="change-volume-input" type="range" min="0.1" max="1" step="0.1" value="0.5" oninput="this.nextElementSibling.value = this.value"/><output>0.5</output></li>
-            </ul>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bet Drag Racing Simulator</title>
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
+    <body>
+        <div class="toolbar">
+            <h1 class="toolbar__title">Bet Drag Racing Simulator</h1>
+            <div class="toolbar__menu menu">
+                <button class="menu__button" id="menu-btn"><i class="bi bi-gear-fill"></i></button>
+                <ul class="menu__list list" id="menu-list">
+                    <li class="list__item" data-list-item="1"><i class="bi bi-arrow-clockwise"></i>Reset</li>
+                    <li class="list__item" data-list-item="2"><i class="bi bi-volume-mute-fill"></i>Włącz muzykę</li>
+                    <li class="list__item" data-list-item="3"><i class="bi bi-skip-forward-fill"></i>Przełącz muzykę</li>
+                    <li class="list__item" data-list-item="4">
+                        <input
+                            id="change-volume-input"
+                            type="range"
+                            min="0.1"
+                            max="1"
+                            step="0.1"
+                            value="0.5"
+                            oninput="this.nextElementSibling.value = this.value"
+                        /><output>0.5</output>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    
-    <div class="statistics">
-        <div class="statistics__cash">
-            <p id="statistics-cash" class="statistics__text statistics__text--cash">1500</p>
-        </div>
-        <div class="statistics__win">
-            <p id="statistics-win" class="statistics__text statistics__text--win">0</p>
-        </div>
-        <div class="statistics__lose">
-            <p id="statistics-lose" class="statistics__text statistics__text--lose">0</p>
-        </div>
-    </div>
 
-    <div class="page page--home" id="page-home">
-        <div class="page__container container">
+        <div class="statistics">
+            <div class="statistics__cash">
+                <p id="statistics-cash" class="statistics__text statistics__text--cash">1500</p>
+            </div>
+            <div class="statistics__win">
+                <p class="statistics__text statistics__text--win"><span id="statistics-win">0</span>&nbsp;<i class="bi bi-check2"></i></p>
+            </div>
+            <div class="statistics__lose">
+                <p class="statistics__text statistics__text--lose"><span id="statistics-lose">0</span>&nbsp;<i class="bi bi-x"></i></p>
+            </div>
+        </div>
 
-            <div class="container__bet bet">
-                <div class="bet__title title">
-                    <h2 class="title__main">Wytypuj zwycięzce</h2>
-                </div>
+        <div class="page page--home" id="page-home">
+            <div class="page__container container">
+                <div class="container__bet bet">
+                    <div class="bet__title title">
+                        <h2 class="title__main">Wytypuj zwycięzce</h2>
+                    </div>
 
-                <div class="bet__drivers drivers">
-                    <div class="drivers__option option" data-option-id="1">
-                        <div class="option__image image">
-                            <img src="" alt="" class="image__img" data-option-photo="1"/>
-                        </div>
-                        <div class="option__info info">
-                            <h3 class="info__title" data-option-name="1"></h3>
-                            <div class="info__country country">
-                                <img src="" alt="" class="country__img" data-option-flag="1">
-                                <p class="country__text" data-option-country="1"></p>
+                    <div class="bet__drivers drivers">
+                        <div class="drivers__option option" data-option-id="1">
+                            <div class="option__image image">
+                                <img src="" alt="" class="image__img" data-option-photo="1" />
+                            </div>
+                            <div class="option__info info">
+                                <h3 class="info__title" data-option-name="1"></h3>
+                                <div class="info__country country">
+                                    <img src="" alt="" class="country__img" data-option-flag="1" />
+                                    <p class="country__text" data-option-country="1"></p>
+                                </div>
+                            </div>
+                            <div class="option__chances chances">
+                                <h3 class="chances__number" data-option-chances="1"></h3>
+                            </div>
+                            <div class="option__spinner spinner" data-option-spiner="1">
+                                <div class="spinner__icon">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="option__chances chances">
-                            <h3 class="chances__number" data-option-chances="1"></h3>
-                        </div>
-                        <div class="option__spinner spinner" data-option-spiner="1">
-                            <div class="spinner__icon"><div></div><div></div><div></div><div></div></div>
-                        </div>
-                    </div>
-                    
-                    <div class="drivers__option option" data-option-id="2">
-                        <div class="option__image image">
-                            <img src="" alt="" class="image__img" data-option-photo="2"/>
-                        </div>
-                        <div class="option__info info">
-                            <h3 class="info__title" data-option-name="2"></h3>
-                            <div class="info__country country">
-                                <img src="" alt="" class="country__img" data-option-flag="2">
-                                <p class="country__text" data-option-country="2"></p>
+
+                        <div class="drivers__option option" data-option-id="2">
+                            <div class="option__image image">
+                                <img src="" alt="" class="image__img" data-option-photo="2" />
+                            </div>
+                            <div class="option__info info">
+                                <h3 class="info__title" data-option-name="2"></h3>
+                                <div class="info__country country">
+                                    <img src="" alt="" class="country__img" data-option-flag="2" />
+                                    <p class="country__text" data-option-country="2"></p>
+                                </div>
+                            </div>
+                            <div class="option__chances chances">
+                                <h3 class="chances__number" data-option-chances="2"></h3>
+                            </div>
+                            <div class="option__spinner spinner" data-option-spiner="2">
+                                <div class="spinner__icon">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="option__chances chances">
-                            <h3 class="chances__number" data-option-chances="2"></h3>
+                    </div>
+
+                    <div class="bet__calculate" data-bet="1">
+                        <div class="calculate__field field">
+                            <p class="field__text">Postawiona kwota</p>
+                            <div class="field__value value">
+                                <input type="number" data-bet-amount="1" min="1" class="value__input" />
+                            </div>
                         </div>
-                        <div class="option__spinner spinner" data-option-spiner="2">
-                            <div class="spinner__icon"><div></div><div></div><div></div><div></div></div>
+
+                        <div class="calculate__field field">
+                            <p class="field__text">Potęcjalna wygrana</p>
+                            <div class="field__value value">
+                                <p data-bet-prize="1" class="value__text"></p>
+                            </div>
+                        </div>
+
+                        <div class="calculate__field field">
+                            <p class="field__text">Potrącony podatek (12%)</p>
+                            <div class="field__value value">
+                                <p data-bet-duty="1" class="value__text"></p>
+                            </div>
+                        </div>
+
+                        <div class="calculate__field field">
+                            <p class="field__text">Wygrana na czysto</p>
+                            <div class="field__value value">
+                                <p data-bet-win-clear="1" class="value__text"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                
-                <div class="bet__calculate" data-bet="1">
-                    <div class="calculate__field field">
-                        <p class="field__text">Postawiona kwota</p>
-                        <div class="field__value value">
-                            <input type="number" data-bet-amount="1" min="1" class="value__input"/>
-                        </div>
-                    </div>
 
-                    <div class="calculate__field field">
-                        <p class="field__text">Potęcjalna wygrana</p>
-                        <div class="field__value value">
-                            <p data-bet-prize="1" class="value__text"></p>
-                        </div>
-                    </div>
+                <div class="container__bet bet"></div>
 
-                    <div class="calculate__field field">
-                        <p class="field__text">Potrącony podatek (12%)</p>
-                        <div class="field__value value">
-                            <p data-bet-duty="1" class="value__text"></p>
-                        </div>
-                    </div>
-
-                    <div class="calculate__field field">
-                        <p class="field__text">Wygrana na czysto</p>
-                        <div class="field__value value">
-                            <p data-bet-win-clear="1" class="value__text"></p>
-                        </div>
-                    </div>
+                <div class="container__button button">
+                    <!-- <button class="button__main" id="page-btn-start">Zacznij wyścig</button> -->
+                    <button class="button__main cta" id="page-btn-start">
+                        <span class="span">START</span>
+                        <span class="second">
+                            <svg
+                                width="50px"
+                                height="20px"
+                                viewBox="0 0 66 43"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                            >
+                                <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <path
+                                        class="one"
+                                        d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                                        fill="#FFFFFF"
+                                    ></path>
+                                    <path
+                                        class="two"
+                                        d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                                        fill="#FFFFFF"
+                                    ></path>
+                                    <path
+                                        class="three"
+                                        d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                                        fill="#FFFFFF"
+                                    ></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </button>
                 </div>
             </div>
-
-            <div class="container__bet bet">
-
-            </div>
-
-            <div class="container__button button">
-                <button class="button__main" id="page-btn-start">Zacznij wyścig</button>
-            </div>
-
-        </div>
-        <!-- <h2>Wytypuj zwycięzce</h2>
+            <!-- <h2>Wytypuj zwycięzce</h2>
         <button class="page__btn-main" id="page-btn-start">Zacznij wyścig</button> -->
-    </div>
-
-    <div class="page page--race page--disabled" id="page-race">
-        <div class="page__container container">
-            <div class="containter__race race">
-                <div class="race__info info">
-                    <div class="info__image image">
-                        <img class="image__img" data-race-photo="1" src="">
-                    </div>
-
-                    <div class="info__member member">
-                        <div class="member__name name">
-                            <h3 class="name__title" data-race-name="1"></h3>
-                        </div>
-                        
-                        <div class="member__country country">
-                            <div class="country__flag"><img data-race-flag="1" src=""></div>
-                            <div class="country__text" data-race-country="1"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="race__track track">
-                    <div class="track__item" data-race-track="1"></div>
-                </div>
-            </div>
-
-            <div class="containter__race race">
-                <div class="race__info info">
-                    <div class="info__image image">
-                        <img class="image__img" data-race-photo="2" src="">
-                    </div>
-
-                    <div class="info__member member">
-                        <div class="member__name name">
-                            <h3 class="name__title" data-race-name="2"></h3>
-                        </div>
-                        
-                        <div class="member__country country">
-                            <div class="country__flag"><img data-race-flag="2" src=""></div>
-                            <div class="country__text" data-race-country="2"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="race__track track">
-                    <div class="track__item" data-race-track="2"></div>
-                </div>
-            </div>
-
-            <div class="container__result result">
-                <h1 class="result__title" id="result-title"></h1>
-            </div>
-
-            <button class="page__btn-main" id="page-btn-exit">Wyjdź z wyścigu</button>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/main.js" type="module"></script>
-</body>
+        <div class="page page--race page--disabled" id="page-race">
+            <div class="page__container container">
+                <div class="containter__race race">
+                    <div class="race__info info">
+                        <div class="info__image image">
+                            <img class="image__img" data-race-photo="1" src="" />
+                        </div>
+
+                        <div class="info__member member">
+                            <div class="member__name name">
+                                <h3 class="name__title" data-race-name="1"></h3>
+                            </div>
+
+                            <div class="member__country country">
+                                <div class="country__flag"><img data-race-flag="1" src="" /></div>
+                                <div class="country__text" data-race-country="1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="race__track track">
+                        <div class="track__item" data-race-track="1"></div>
+                    </div>
+                </div>
+
+                <div class="containter__race race">
+                    <div class="race__info info">
+                        <div class="info__image image">
+                            <img class="image__img" data-race-photo="2" src="" />
+                        </div>
+
+                        <div class="info__member member">
+                            <div class="member__name name">
+                                <h3 class="name__title" data-race-name="2"></h3>
+                            </div>
+
+                            <div class="member__country country">
+                                <div class="country__flag"><img data-race-flag="2" src="" /></div>
+                                <div class="country__text" data-race-country="2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="race__track track">
+                        <div class="track__item" data-race-track="2"></div>
+                    </div>
+                </div>
+
+                <div class="container__result result">
+                    <h1 class="result__title" id="result-title"></h1>
+                </div>
+
+                <button class="page__btn-main" id="page-btn-exit">Wyjdź z wyścigu</button>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="js/main.js" type="module"></script>
+    </body>
 </html>

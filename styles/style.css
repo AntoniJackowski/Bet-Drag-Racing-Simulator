@@ -1,11 +1,12 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
-@import "spinner.css";
-
-:root {
-    --toolbar-height: 70px;
-    --statistics-height: 40px;
-    --drivers-option-gap: 30px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css');
+@import 'variables.css';
+@import 'spinner.css';
+@import 'button.css';
+@import 'menuList.css';
+@import 'statistics.css';
+@import 'cards.css';
+@import 'driversOption.css';
 
 * {
     box-sizing: border-box;
@@ -22,46 +23,29 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
-    border: 1px solid #000;
     height: var(--toolbar-height);
+    background-color: #401995;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.toolbar__title {
+    font-family: 'Racing Sans One', cursive;
+    color: var(--color-secondary);
 }
 
 .toolbar__menu {
     position: relative;
 }
 
-.menu__list {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: #c0c0c0;
-    border: 1px solid #000;
-    list-style: none;
-    width: 150px;
-}
-
-.menu__list--visible {
-    display: block;
-}
-
-.statistics {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 300px;
-    padding: 0 20px;
-    margin: 0 auto;
-    border: 1px solid #000;
-    height: var(--statistics-height);
-}
-
 .page {
     display: flex;
     align-items: center;
-    border: 1px solid #000;
     width: 100%;
     min-height: calc(100vh - var(--toolbar-height));
     margin-top: calc(var(--statistics-height) * -1);
+    background-image: radial-gradient(#d85bf3, var(--color-primary));
+    /* background-color: #eceff1; */
 }
 
 .page--disabled {
@@ -83,7 +67,12 @@ body {
     justify-content: space-between;
 }
 
-.drivers__option {
+.container__button {
+    display: flex;
+    justify-content: center;
+}
+
+/* .drivers__option {
     position: relative;
     display: flex;
     border: 1px solid #000;
@@ -95,7 +84,7 @@ body {
 
 .drivers__option--is-selected {
     outline: 2px solid red;
-}
+} */
 
 .image__img {
     display: block;
@@ -136,7 +125,6 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #000;
 }
 
 .option__spinner--is-loading {
@@ -195,9 +183,9 @@ body {
 }
 
 .track__item--running {
-        animation: move both;
-    }
-  
+    animation: move both;
+}
+
 @keyframes move {
     from {
         left: 0;
@@ -206,5 +194,3 @@ body {
         left: calc(100% - 10%);
     }
 }
-
-

@@ -1,0 +1,9 @@
+:root {
+    /* COLORS */
+    --color-primary: #6225e6;
+    --color-secondary: #fbc638;
+
+    --toolbar-height: 70px;
+    --statistics-height: 40px;
+    --drivers-option-gap: 30px;
+}

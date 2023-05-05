@@ -1,0 +1,41 @@
+.menu__button {
+    padding: 8px;
+    cursor: pointer;
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    color: var(--color-secondary);
+}
+
+.menu__list {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--color-primary);
+    list-style: none;
+    width: 250px;
+    color: #fff;
+    z-index: 99999;
+}
+
+.menu__list--visible {
+    display: block;
+}
+
+.list__item {
+    padding: 15px 10px;
+    border-bottom: 1px solid #0f0c29;
+    cursor: pointer;
+}
+
+.list__item .bi {
+    color: var(--color-secondary);
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.list__item output {
+    color: var(--color-secondary);
+    margin-left: 10px;
+    font-weight: bold;
+}
