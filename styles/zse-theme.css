@@ -1,0 +1,104 @@
+/* #e9ecef */
+
+.toolbar__logo {
+    height: 90%;
+    margin-right: 15px;
+    margin-left: -15px;
+}
+
+.toolbar__logo--disabled {
+    display: none;
+}
+
+.toolbar--zse {
+    background-color: #d3d6da !important;
+}
+
+.toolbar__title--zse {
+    color: #bd3d25 !important;
+}
+
+.menu__button--zse {
+    color: #bd3d25 !important;
+}
+
+.menu__list--zse {
+    background-color: #a9a9a9 !important;
+}
+
+.item__bi--zse {
+    color: #bd3d25 !important;
+}
+
+.item__output--zse {
+    color: #bd3d25 !important;
+}
+
+.statistics--zse {
+    background-color: #a9a9a9;
+}
+
+.page--zse {
+    background-image: radial-gradient(#e9ecef, #a9a9a9) !important;
+}
+
+.drivers__option--zse {
+    transition: all 0.2s;
+    position: relative;
+    display: flex;
+    width: calc(50% - var(--drivers-option-gap) / 2);
+    height: 130px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.drivers__option--zse:hover {
+    transform: scale(0.96);
+    box-shadow: 0px 0px 30px 1px rgba(189, 61, 37, 0.3);
+}
+
+.drivers__option--zse--is-selected {
+    box-shadow: 0px 0px 30px 1px rgba(189, 61, 37, 0.3);
+    border: 1px solid rgba(189, 61, 37, 0.3);
+}
+
+.cta--zse {
+    background: #b4b6ba;
+    box-shadow: 6px 6px 0 rgb(66, 66, 66);
+}
+
+.cta--zse:hover {
+    box-shadow: 10px 10px 0 #bd3d25;
+}
+
+.cta--zse:hover .three {
+    animation: color_anim--zse 1s infinite 0.2s;
+}
+
+.cta--zse:hover .one {
+    transform: translateX(0%);
+    animation: color_anim--zse 1s infinite 0.6s;
+}
+
+.cta--zse:hover .two {
+    transform: translateX(0%);
+    animation: color_anim--zse 1s infinite 0.4s;
+}
+
+@keyframes color_anim--zse {
+    0% {
+        fill: white;
+    }
+
+    50% {
+        fill: #bd3d25;
+    }
+
+    100% {
+        fill: white;
+    }
+}
+
+.result__title--zse {
+    color: #bd3d25 !important;
+}

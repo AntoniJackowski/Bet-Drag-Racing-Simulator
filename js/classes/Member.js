@@ -94,10 +94,10 @@ export class Member {
         this.#DOMrenderRaceCountries.textContent = this.#country;
     }
 
-    toogleSelect() {
-        this.#isSelected ? (this.#isSelected = false) : (this.#isSelected = true);
-        this.#DOMrenderId.classList.toggle(this.#isSelectedActiceClass);
-    }
+    // toogleSelect() {
+    //     this.#isSelected ? (this.#isSelected = false) : (this.#isSelected = true);
+    //     this.#DOMrenderId.classList.toggle(this.#isSelectedActiceClass);
+    // }
 
     addSelect() {
         this.#isSelected = true;
@@ -130,7 +130,19 @@ export class Member {
         this.#isWinner = true;
     }
 
+    setAsLoser() {
+        this.#isWinner = false;
+    }
+
     getIsWinner() {
         return this.#isWinner;
+    }
+
+    setIsSelectedActiceClass(value) {
+        this.#isSelectedActiceClass = value;
+    }
+
+    removeClass(value) {
+        this.#DOMrenderId.classList.remove(value);
     }
 }

@@ -13,9 +13,13 @@ export class Game {
     #DOMrenderRaceTrack;
     #DOMrenderResultTitle;
     #DOMrenderPageBtnExit;
+    #DOMrenderPageBtnStart;
     #DOMrenderStatisticsWin;
     #DOMrenderStatisticsLose;
     #DOMrenderBetAmount;
+    #DOMrenderBetPrize;
+    #DOMrenderBetDuty;
+    #DOMrenderBetWinClear;
 
     #winCounter = this.getLocalStorage('winCounter');
     #loseCounter = this.getLocalStorage('loseCounter');
@@ -33,9 +37,13 @@ export class Game {
         DOMrenderRaceTrack,
         DOMrenderResultTitle,
         DOMrenderPageBtnExit,
+        DOMrenderPageBtnStart,
         DOMrenderstatisticsWin,
         DOMrenderstatisticsLose,
         DOMrenderBetAmount,
+        DOMrenderBetPrize,
+        DOMrenderBetDuty,
+        DOMrenderBetWinClear,
     ) {
         this.#bets = bets;
         this.#wallet = wallet;
@@ -46,9 +54,13 @@ export class Game {
         this.#DOMrenderRaceTrack = DOMrenderRaceTrack;
         this.#DOMrenderResultTitle = DOMrenderResultTitle;
         this.#DOMrenderPageBtnExit = DOMrenderPageBtnExit;
+        this.#DOMrenderPageBtnStart = DOMrenderPageBtnStart;
         this.#DOMrenderStatisticsWin = DOMrenderstatisticsWin;
         this.#DOMrenderStatisticsLose = DOMrenderstatisticsLose;
         this.#DOMrenderBetAmount = DOMrenderBetAmount;
+        this.#DOMrenderBetPrize = DOMrenderBetPrize;
+        this.#DOMrenderBetDuty = DOMrenderBetDuty;
+        this.#DOMrenderBetWinClear = DOMrenderBetWinClear;
 
         this.#DOMrenderStatisticsWin.textContent = this.#winCounter;
         this.#DOMrenderStatisticsLose.textContent = this.#loseCounter;
@@ -78,8 +90,11 @@ export class Game {
             });
             const winnerIndex = raceTimes.indexOf(Math.min(...raceTimes));
             this.#betsWinner.push(winnerIndex);
-            this.#members[winnerIndex].setAsWinner();
         });
+
+        this.#members[this.#betsWinner].setAsWinner();
+        this.#members[1 - this.#betsWinner].setAsLoser();
+
         const maxRaceTimeout = Math.max(...raceTimes) * 1000;
 
         this.#timeOut = setTimeout(() => {
@@ -93,6 +108,7 @@ export class Game {
         this.#bets.forEach((bet) => {
             const selectedMember = bet.getSelectedMember();
             const isWinner = selectedMember.getIsWinner();
+
             if (isWinner) {
                 this.#wallet.modifyAmount(bet.getBetAmount() + bet.getBetWinClear());
                 this.#DOMrenderResultTitle.textContent = 'WYGRAŁEŚ';
@@ -122,11 +138,18 @@ export class Game {
 
         this.#DOMrenderBetAmount.forEach((item) => {
             item.value = null;
+            item.disabled = true;
         });
+
+        this.#DOMrenderBetPrize[0].textContent = '0.00 zł';
+        this.#DOMrenderBetDuty[0].textContent = '0.00 zł';
+        this.#DOMrenderBetWinClear[0].textContent = '0.00 zł';
 
         this.#bets.forEach((item) => {
             item.clearSelectedMember();
         });
+
+        this.#DOMrenderPageBtnStart.disabled = true;
     }
 
     #getRandomFloat(min, max) {
@@ -134,10 +157,10 @@ export class Game {
     }
 
     #getRandomCubicBezier() {
-        const arg1 = this.#getRandomFloat(0, 1);
-        const arg2 = this.#getRandomFloat(0, 1);
-        const arg3 = this.#getRandomFloat(0, 1);
-        const arg4 = this.#getRandomFloat(0, 1);
+        const arg1 = this.#getRandomFloat(0.3, 0.7);
+        const arg2 = this.#getRandomFloat(0.3, 0.7);
+        const arg3 = this.#getRandomFloat(0.3, 0.7);
+        const arg4 = this.#getRandomFloat(0.3, 0.7);
         return `cubic-bezier(${arg1}, ${arg2}, ${arg3}, ${arg4})`;
     }
 
@@ -153,10 +176,8 @@ export class Game {
 
     getLocalStorage(key) {
         if (localStorage.getItem(key) != null) {
-            console.log(key, 'true');
             return localStorage.getItem(key);
         } else {
-            console.log(key, 'false');
             return 0;
         }
     }

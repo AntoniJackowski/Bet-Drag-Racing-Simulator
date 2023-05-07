@@ -95,7 +95,6 @@ export class Bet {
     }
 
     #handleEmptyBetAmount(value) {
-        // this.#DOMpageBtnStart.disabled = value === '';
         this.#DOMpageBtnStart.disabled = !value;
     }
 

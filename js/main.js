@@ -6,6 +6,7 @@ import { Wallet } from './classes/Wallet.js';
 import * as DOM from './elements.js';
 import * as utils from './utils.js';
 import { Sound } from './classes/Sound.js';
+import { zseTheme, normalTheme } from './themeChanger.js';
 
 const onInit = () => {
     DOM.menuBtn.addEventListener('click', () => {
@@ -75,10 +76,16 @@ const onInit = () => {
         DOM.raceTrack,
         DOM.resultTitle,
         DOM.pageBtnExit,
+        DOM.pageBtnStart,
         DOM.statisticsWin,
         DOM.statisticsLose,
         DOM.betsAmounts,
+        DOM.betsPrizes,
+        DOM.betsDuty,
+        DOM.betsWinClear,
     );
+
+    let normTheme = true;
 
     DOM.menuListItems.forEach((item) => {
         item.addEventListener('click', () => {
@@ -89,7 +96,7 @@ const onInit = () => {
                     break;
 
                 case '2':
-                    Sound.isPlaying ? Sound.stop() : Sound.play();
+                    Sound.isPlaying ? Sound.stop(normTheme) : Sound.play(normTheme);
                     break;
 
                 case '3':
@@ -98,6 +105,28 @@ const onInit = () => {
 
                 case '4':
                     Sound.volume(DOM.changeVolumeInput.value);
+                    break;
+
+                case '5':
+                    if (normTheme) {
+                        zseTheme();
+                        normTheme = false;
+                        members.forEach((member) => {
+                            member.removeClass('drivers__option--is-selected');
+                            member.setIsSelectedActiceClass('drivers__option--zse--is-selected');
+                            if (member.getIsSelected()) member.addSelect();
+                            else member.removeSelect();
+                        });
+                    } else {
+                        normalTheme();
+                        normTheme = true;
+                        members.forEach((member) => {
+                            member.removeClass('drivers__option--zse--is-selected');
+                            member.setIsSelectedActiceClass('drivers__option--is-selected');
+                            if (member.getIsSelected()) member.addSelect();
+                            else member.removeSelect();
+                        });
+                    }
                     break;
 
                 default:

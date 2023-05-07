@@ -7,6 +7,7 @@
 @import 'statistics.css';
 @import 'cards.css';
 @import 'driversOption.css';
+@import 'zse-theme.css';
 
 * {
     box-sizing: border-box;
@@ -55,7 +56,7 @@ body {
 .page__container {
     margin: 50px auto;
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 .bet__title {
@@ -147,11 +148,20 @@ body {
 .containter__race {
     display: flex;
     border: 1px solid #000;
+    margin-bottom: 20px;
+}
+
+.container__result {
+    display: flex;
+    justify-content: center;
+    transition: 2s;
+    padding: 20px;
+    color: var(--color-secondary);
 }
 
 .race__info {
     display: flex;
-    border: 1px solid #000;
+    border-right: 1px solid #000;
     width: 350px;
 }
 
@@ -177,9 +187,9 @@ body {
     left: 0;
     transition: 10s;
     transform: translateX(0);
-    width: 10%;
+    width: 20%;
     height: 100%;
-    border: 1px solid #000;
+    user-select: none;
 }
 
 .track__item--running {
@@ -191,6 +201,6 @@ body {
         left: 0;
     }
     to {
-        left: calc(100% - 10%);
+        left: calc(100% - 20%);
     }
 }

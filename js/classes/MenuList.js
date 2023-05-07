@@ -33,10 +33,20 @@ export class MenuList {
         });
     }
 
-    static changeSoundItemValue(value) {
+    static changeSoundItemValue(value, theme) {
         const soundItem = DOM.menuListItems.find((item) => item.attributes['data-list-item'].value === '2');
-        value
-            ? (soundItem.innerHTML = '<i class="bi bi-volume-up-fill"></i>Wyłącz muzykę')
-            : (soundItem.innerHTML = '<i class="bi bi-volume-mute-fill"></i>Włącz muzykę');
+        // value
+        //     ? (soundItem.innerHTML = '<i class="item__bi bi bi-volume-up-fill"></i>Wyłącz muzykę')
+        //     : (soundItem.innerHTML = '<i class="item__bi bi bi-volume-mute-fill"></i>Włącz muzykę');
+
+        if (value) {
+            theme
+                ? (soundItem.innerHTML = '<i class="item__bi bi bi-volume-up-fill"></i>Wyłącz muzykę')
+                : (soundItem.innerHTML = '<i class="item__bi item__bi--zse bi bi-volume-up-fill"></i>Wyłącz muzykę');
+        } else {
+            theme
+                ? (soundItem.innerHTML = '<i class="item__bi bi bi-volume-mute-fill"></i>Włącz muzykę')
+                : (soundItem.innerHTML = '<i class="item__bi item__bi--zse bi bi-volume-mute-fill"></i>Włącz muzykę');
+        }
     }
 }

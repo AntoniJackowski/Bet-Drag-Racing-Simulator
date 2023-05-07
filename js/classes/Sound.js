@@ -7,20 +7,20 @@ export class Sound {
     static #musicIndex = 0;
     static #volume = 0.5;
 
-    static play() {
+    static play(theme) {
         Sound.#sound = new Audio(Sound.#soundList[Sound.#musicIndex]);
         Sound.#sound.play();
         Sound.#sound.loop = true;
         Sound.#sound.autoplay = true;
         Sound.isPlaying = true;
-        MenuList.changeSoundItemValue(Sound.isPlaying);
+        MenuList.changeSoundItemValue(Sound.isPlaying, theme);
     }
 
-    static stop() {
+    static stop(theme) {
         Sound.#sound.pause();
         Sound.#sound.currentTime = 0;
         Sound.isPlaying = false;
-        MenuList.changeSoundItemValue(Sound.isPlaying);
+        MenuList.changeSoundItemValue(Sound.isPlaying, theme);
     }
 
     static pause() {
